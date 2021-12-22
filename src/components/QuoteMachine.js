@@ -1,38 +1,4 @@
-import { useEffect, useState } from "react";
-
-function QuoteMachine({ updateStyle, quotes }) {
-  const [quote, setQuote] = useState("");
-  const [author, setAuthor] = useState("");
-
-  let colors = [
-    "#16a085",
-    "#27ae60",
-    "#2c3e50",
-    "#f39c12",
-    "#e74c3c",
-    "#9b59b6",
-    "#FB6964",
-    "#342224",
-    "#472E32",
-    "#BDBB99",
-    "#77B1A9",
-    "#73A857",
-  ];
-
-  useEffect(() => {
-     getRandomQuote()
-  });
-
-  const getRandomQuote = () => {
-    setQuote(quotes[Math.floor(Math.random() * quotes.length)]?.quote);
-    setAuthor(quotes[Math.floor(Math.random() * quotes.length)]?.author);
-
-    let index = Math.floor(Math.random() * colors.length);
-    updateStyle({
-      backgroundColor: colors[index],
-      color: colors[index],
-    });
-  };
+function QuoteMachine({ getNewQuote, quote, author }) {
 
   return (
     <div id="quote-box">
@@ -43,7 +9,7 @@ function QuoteMachine({ updateStyle, quotes }) {
       <div className="quote-author">
         - <span id="author">{author}</span>
       </div>
-      <button id="new-quote" onClick={getRandomQuote}>
+      <button id="new-quote" onClick={getNewQuote}>
         New Quote
       </button>
       <a

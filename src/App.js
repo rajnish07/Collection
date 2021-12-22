@@ -8,18 +8,11 @@ import More from "./components/More";
 function App() {
   const [styles, setStyles] = useState({
     backgroundColor: "#333",
-    color: "#fff",
+    color: "#333",
   });
   const [quotes, setQuotes] = useState([]);
-
-  useEffect(() => {
-    fetch(
-      "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json"
-    )
-      .then((response) => response.json())
-      .then((data) => setQuotes(data.quotes))
-      .catch((error) => console.log(`Some error occured: ${error}`));
-  }, []);
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
 
   const projects = [
     { id: 1, name: "Quote Machine", link: "/" },
@@ -27,9 +20,45 @@ function App() {
     { id: 3, name: "More Coming..", link: "/coming" },
   ];
 
-  const newStyle = (style) => {
-    setStyles(style);
+  const colors = [
+    "#16a085",
+    "#27ae60",
+    "#2c3e50",
+    "#f39c12",
+    "#e74c3c",
+    "#9b59b6",
+    "#FB6964",
+    "#342224",
+    "#472E32",
+    "#BDBB99",
+    "#77B1A9",
+    "#73A857",
+  ];
+
+  const getRandomQuote = () => {
+    setQuote(quotes[Math.floor(Math.random() * quotes.length)]?.quote);
+    setAuthor(quotes[Math.floor(Math.random() * quotes.length)]?.author);
+
+    let index = Math.floor(Math.random() * colors.length);
+    setStyles({
+      backgroundColor: colors[index],
+      color: colors[index],
+    });
   };
+
+  useEffect(() => {
+    fetch(
+      "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        let quotes = data.quotes;
+        setQuotes(quotes)
+        setQuote(quotes[Math.floor(Math.random() * quotes.length)].quote)
+        setAuthor(quotes[Math.floor(Math.random() * quotes.length)].author)
+      })
+      .catch((error) => console.log(`Some error occured: ${error}`));
+  },[]);
 
   return (
     <div className="App">
@@ -54,7 +83,7 @@ function App() {
             <Route
               path="/"
               exact
-              element={<QuoteMachine updateStyle={newStyle} quotes={quotes}/>}
+              element={<QuoteMachine getNewQuote={getRandomQuote} quote={quote} author={author}/>}
             />
             <Route path="/break-planner" element={<BreakPlanner />} />
             <Route path="/coming" element={<More />} />
