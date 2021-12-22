@@ -21,7 +21,7 @@ function QuoteMachine({ updateStyle, quotes }) {
 
   useEffect(() => {
      getRandomQuote()
-  }, [quotes]);
+  });
 
   const getRandomQuote = () => {
     setQuote(quotes[Math.floor(Math.random() * quotes.length)]?.quote);
