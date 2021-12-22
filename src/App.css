@@ -1,38 +1,109 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.panel{
+  width: 20%;
+  height: 100vh;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.project-items{
+  margin-top: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.item{
+  background: #333;
+  padding: 10px 5px 3px 5px;
+  margin: 5px 0;
+  color: #fff;
+  height: 35px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.project{
+  cursor: pointer;
+}
+
+.project:hover{
+  opacity: 0.9;
+}
+
+.app-section{
+  width: 80%;
+  height: 100vh;
+  background-color: #333;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App{
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#quote-box {
+  border-radius: 3px;
+  position: relative;
+  margin: 8% auto auto auto;
+  width: 450px;
+  padding: 40px 50px;
+  display: table;
+  background-color: #fff;
+}
+
+.quote-text {
+    text-align: center;
+    width: 450px;
+    height: auto;
+    clear: both;
+    font-weight: 500;
+    font-size: 1.75em;
+}
+
+.quote-text i {
+    font-size: 1em;
+    margin-right: 0.4em;
+}
+
+.quote-author {
+    width: 450px;
+    height: auto;
+    clear: both;
+    padding-top: 20px;
+    font-size: 1em;
+    text-align: right;
+}
+
+#new-quote {
+    height: 38px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #333;
+    outline: none;
+    font-size: 0.85em;
+    padding: 8px 18px 6px 18px;
+    margin-top: 30px;
+    opacity: 1;
+    float: right;
+    cursor: pointer;
+}
+
+#new-quote:hover {
+      opacity: 0.9;
+}
+
+a{
+  text-decoration: none;
+}
+
+a #tweet-quote{
+  text-align: start ;
+}
+
+.implementation{
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  color: #fff;
+  padding-top: 25%;
 }
