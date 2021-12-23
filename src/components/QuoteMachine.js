@@ -1,3 +1,4 @@
+import { FaTwitterSquare } from "react-icons/fa";
 function QuoteMachine({ getNewQuote, quote, author }) {
 
   return (
@@ -21,7 +22,7 @@ function QuoteMachine({ getNewQuote, quote, author }) {
         target="_top"
         title="tweet this quote"
       >
-        <i className="fa fa-twitter-square"></i>
+        <FaTwitterSquare />
       </a>
     </div>
   );

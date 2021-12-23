@@ -4,6 +4,7 @@ import QuoteMachine from "./components/QuoteMachine";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import BreakPlanner from "./components/BreakPlanner";
 import More from "./components/More";
+import Previewer from "./components/Previewer";
 
 function App() {
   const [styles, setStyles] = useState({
@@ -16,8 +17,9 @@ function App() {
 
   const projects = [
     { id: 1, name: "Quote Machine", link: "/" },
-    { id: 2, name: "Break Planner", link: "/break-planner" },
-    { id: 3, name: "More Coming..", link: "/coming" },
+    { id: 2, name: "Markdown Previewer", link: "/markdown-previewer" },
+    { id: 3, name: "Drum Machine", link: "/drum-machine" },
+    { id: 4, name: "More Coming..", link: "/coming"}
   ];
 
   const colors = [
@@ -53,12 +55,12 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         let quotes = data.quotes;
-        setQuotes(quotes)
-        setQuote(quotes[Math.floor(Math.random() * quotes.length)].quote)
-        setAuthor(quotes[Math.floor(Math.random() * quotes.length)].author)
+        setQuotes(quotes);
+        setQuote(quotes[Math.floor(Math.random() * quotes.length)].quote);
+        setAuthor(quotes[Math.floor(Math.random() * quotes.length)].author);
       })
       .catch((error) => console.log(`Some error occured: ${error}`));
-  },[]);
+  }, []);
 
   return (
     <div className="App">
@@ -83,9 +85,16 @@ function App() {
             <Route
               path="/"
               exact
-              element={<QuoteMachine getNewQuote={getRandomQuote} quote={quote} author={author}/>}
+              element={
+                <QuoteMachine
+                  getNewQuote={getRandomQuote}
+                  quote={quote}
+                  author={author}
+                />
+              }
             />
-            <Route path="/break-planner" element={<BreakPlanner />} />
+            <Route path="/drum-machine" element={<BreakPlanner />} />
+            <Route path="/markdown-previewer" element={<Previewer />} />
             <Route path="/coming" element={<More />} />
           </Routes>
         </div>
