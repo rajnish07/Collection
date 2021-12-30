@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import QuoteMachine from "./components/QuoteMachine";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import BreakPlanner from "./components/BreakPlanner";
 import More from "./components/More";
 import Previewer from "./components/Previewer";
+import DrumMachine from "./components/DrumMachine";
 
 function App() {
   const [styles, setStyles] = useState({
@@ -19,7 +19,7 @@ function App() {
     { id: 1, name: "Quote Machine", link: "/" },
     { id: 2, name: "Markdown Previewer", link: "/markdown-previewer" },
     { id: 3, name: "Drum Machine", link: "/drum-machine" },
-    { id: 4, name: "More Coming..", link: "/coming"}
+    { id: 4, name: "More Coming..", link: "/coming" },
   ];
 
   const colors = [
@@ -74,13 +74,14 @@ function App() {
           </div>
           <div className="project-items">
             {projects.map((project) => (
-              <Link to={project.link} key={project.id}>
-                <h3 className="item project">{project.name}</h3>
-              </Link>
-            ))}
+                <Link to={project.link} key={project.id}>
+                  <h3 className="item project">{project.name}</h3>
+                </Link>
+              ))}
           </div>
         </div>
         <div className="app-section" style={styles}>
+          {/* <div className="response">*This App is not fully responsive. Please view this on large Screen for better viewing experince.</div> */}
           <Routes>
             <Route
               path="/"
@@ -93,7 +94,7 @@ function App() {
                 />
               }
             />
-            <Route path="/drum-machine" element={<BreakPlanner />} />
+            <Route path="/drum-machine" element={<DrumMachine />} />
             <Route path="/markdown-previewer" element={<Previewer />} />
             <Route path="/coming" element={<More />} />
           </Routes>
