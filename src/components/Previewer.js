@@ -44,7 +44,7 @@ And here. | Okay. | I think we get it.
 1. Use just 1s if you want!
 1. And last but not least, let's not forget embedded images:
 
-![Wheel](https://media.istockphoto.com/photos/vintage-picture-id139681672?k=20&m=139681672&s=612x612&w=0&h=yjcE7_0Lx3W26MUoA4yTs_SoQz2jbA9QxZrhDVSBiRk=)`;
+![image](https://user-images.githubusercontent.com/40293642/147754718-9a1ea367-1413-4fbf-b25f-4e33488a2490.png)`;
 
 function Previewer() {
 const [editorText, setEditorText] = useState(defaultValue);
